@@ -1,55 +1,25 @@
-# [Mobile Boilerplate](http://html5boilerplate.com/mobile/)
+# Eventkrake WebApp
 
-Mobile Boilerplate is a professional front-end template that helps you build
-fast and robust mobile web applications. Spend more time developing and less
-time reinventing the wheel.
+This WebApp allows access to the Eventkrake API. Please read the installation
+instructions to brand it to a certain festival or set of events.
 
-* Source: [https://github.com/h5bp/mobile-boilerplate](https://github.com/h5bp/mobile-boilerplate)
-* Homepage: [http://html5boilerplate.com/mobile/](http://html5boilerplate.com/mobile/)
-* Twitter: [@h5bp](http://twitter.com/h5bp)
+* Source: [https://github.com/g4rf/eventkrake_webapp](https://github.com/g4rf/eventkrake_webapp)
+* Homepage: [eventkrake.de](https://eventkrake.de)
 
 
-## Quick start
+## Installation
 
-Clone the git repo - `git clone git://github.com/h5bp/mobile-boilerplate.git` -
-or [download it](https://github.com/h5bp/mobile-boilerplate/zipball/master)
+1. Clone the git repo - `git clone git://github.com/g4rf/eventkrake_webapp.git` -
+or [download it](https://github.com/g4rf/eventkrake_webapp/zipball/master)
 
 
-## Features
-
-* Mobile browser optimizations.
-* CSS normalizations and common bug fixes.
-* The latest jQuery.
-* A custom Modernizr build for feature detection and a polyfill for CSS Media
-  Queries.
-* Home page icon for Android, iOS, Nokia, Firefox
-* Cross-browser viewport optimization for Android, iOS, Mobile IE, Nokia,
-  and Blackberry.
-* Open Web App support for Firefox for Android and Firefox OS
-* Better font rendering in Mobile IE.
-* iPhone web app meta.
-* INSTANT button click event.
-* Textarea autogrow plugin.
-* Hide URL bar method.
-* Prevent form zoom onfocus method.
-* Mobile site redirection.
-* User Agent Detection.
-* An optimized Google Analytics snippet.
-* Apache server caching, compression, and other configuration defaults for
-  Grade-A performance.
-* Cross-domain Ajax.
-* "Delete-key friendly." Easy to strip out parts you don't need.
-* Extensive inline and accompanying documentation.
 
 
 ## Documentation
 
-Take a look at the [documentation table of contents](doc/README.md). This
-documentation is bundled with the project, which makes it readily available for
-offline reading and provides a useful starting point for any documentation you
-want to write about your project.
+This README.md and inline documentation. Nothing more...
 
 
 ## Contributing
 
-Anyone and everyone is welcome to [contribute](CONTRIBUTING.md).
+Will be great to receive some donations on [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jankossick%40online%2ede&lc=DE&item_name=Eventkrake&no_note=0&currency_code=EUR).
