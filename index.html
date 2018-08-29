@@ -35,20 +35,7 @@
     <script src="js/vendor/modernizr-2.7.1.min.js"></script>
         
 </head><body>
-
-    <!-- top bar -->
-    <div id="top-bar">
-        <div id="app-name"></div>
-        <div id="small-menu">
-            <div class="button info">&#8505;</div>
-        </div>
-        <div id="menu-bar">
-            <div class="button events">Veranstaltungen</div>
-            <div class="button locations">Orte</div>
-            <div class="button map">Was läuft gerade?</div>
-        </div>
-    </div>
-
+    
     <!-- list of all events -->
     <div class="section" id="events-list">
         <div class="no-data">Keine Events gefunden.</div>
@@ -63,7 +50,7 @@
     </div>
 
     <!-- events per location -->
-    <div class="section" id="location-list">
+    <div class="section hidden" id="location-list">
         <select class="locations">
             <option class="no-data">-- keine Orte gefunden --</option>
         </select>
@@ -79,7 +66,20 @@
     </div>
 
     <!-- map -->
-    <div class="section" id="map"></div>
+    <div class="section hidden" id="map"></div>
+
+    <!-- top bar -->
+    <div id="top-bar">
+        <div id="app-name"></div>
+        <div id="small-menu">
+            <div class="button info">&#8505;</div>
+        </div>
+        <div id="menu-bar">
+            <div class="button" data-section="events-list">Veranstaltungen</div>
+            <div class="button" data-section="location-list">Orte</div>
+            <div class="button" data-section="map">Was läuft gerade?</div>
+        </div>
+    </div>
 
     <!-- no javascript message -->
     <div id="no-js">Bitte aktiviere JavaScript. Diese WebApp rennt nicht
@@ -88,9 +88,12 @@
     <!-- Scripts -->
     <script src="js/vendor/jquery-2.1.0.min.js"></script>
     <script src="js/vendor/jq.gettext.js"></script>
+    <script src="js/vendor/localforage.min.js"></script>
 
-    <script src="config.js"></script>
     <script src="js/helper.js"></script>
+    <script src="config.js"></script>    
+    
+    <script src="js/modules/api.js"></script>
+    
     <script src="js/main.js"></script>
-
 </body></html>

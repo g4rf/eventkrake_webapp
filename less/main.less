@@ -9,6 +9,7 @@
 /* ==========================================================================
    Colors
    ========================================================================== */
+@colorTheme: #904840;
 @colorBackground: #fff;
 
 @colorWarning: #f88;
@@ -105,6 +106,10 @@ html.js #no-js {
    Author's custom styles
    ========================================================================== */
 
+.button {
+    cursor: pointer;
+}
+
 .template {
     display: none;
 }
@@ -114,9 +119,17 @@ html.js #no-js {
 }
 
 /* structure */
+#top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: @colorTheme;
+}
 
 .section {
-    display: none;
+    padding: 110px 5px 5px 5px;
 }
 
 
