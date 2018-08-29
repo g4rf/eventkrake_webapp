@@ -7,15 +7,36 @@
  */
 
 /* ==========================================================================
+   Colors
+   ========================================================================== */
+@colorBackground: #fff;
+
+@colorWarning: #f88;
+
+@colorFont: #222;
+@colorLinks: #45aaa6;
+
+/* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+
+/* 
+ * see https://wiki.selfhtml.org/wiki/CSS/Eigenschaften/box-sizing#Vererbung_auf_alle_Elemente
+ */
+html {
+    box-sizing: border-box;
+}
+*, ::before, ::after { 
+    box-sizing: inherit;
+}
+
 
 html,
 button,
 input,
 select,
 textarea {
-    color: #222;
+    color: @colorFont;
 }
 
 body {
@@ -24,15 +45,10 @@ body {
 }
 
 a {
-    color: #00e;
+    color: @colorLinks;
 }
-
-a:visited {
-    color: #551a8b;
-}
-
 a:hover {
-    color: #06e;
+    text-decoration: underline;
 }
 
 /*
@@ -61,13 +77,47 @@ textarea {
     resize: vertical;
 }
 
+/*
+ * No Javascript
+ */
+
+#no-js {
+    position: fixed;
+    top: 33%;
+    left: 20%;
+    right: 20%;
+    
+    background-color: @colorBackground;
+    
+    padding: 3%;    
+    
+    font-size: 1em;
+    font-weight: bold;
+    color: @colorWarning;
+    border: solid 1px @colorWarning;
+}
+html.js #no-js {
+    display: none;
+    visibility: hidden;
+}
+
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
+.template {
+    display: none;
+}
 
+.no-data {
+    opacity: 0.5;
+}
 
+/* structure */
 
+.section {
+    display: none;
+}
 
 
 

@@ -6,8 +6,22 @@
  * Kroc Camen, and the H5BP dev community and team.
  */
 /* ==========================================================================
+   Colors
+   ========================================================================== */
+/* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
+/* 
+ * see https://wiki.selfhtml.org/wiki/CSS/Eigenschaften/box-sizing#Vererbung_auf_alle_Elemente
+ */
+html {
+  box-sizing: border-box;
+}
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
 html,
 button,
 input,
@@ -20,13 +34,10 @@ body {
   line-height: 1.4;
 }
 a {
-  color: #00e;
-}
-a:visited {
-  color: #551a8b;
+  color: #45aaa6;
 }
 a:hover {
-  color: #06e;
+  text-decoration: underline;
 }
 /*
  * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
@@ -48,9 +59,38 @@ fieldset {
 textarea {
   resize: vertical;
 }
+/*
+ * No Javascript
+ */
+#no-js {
+  position: fixed;
+  top: 33%;
+  left: 20%;
+  right: 20%;
+  background-color: #fff;
+  padding: 3%;
+  font-size: 1em;
+  font-weight: bold;
+  color: #f88;
+  border: solid 1px #f88;
+}
+html.js #no-js {
+  display: none;
+  visibility: hidden;
+}
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.template {
+  display: none;
+}
+.no-data {
+  opacity: 0.5;
+}
+/* structure */
+.section {
+  display: none;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
