@@ -12,12 +12,12 @@ instructions to brand it to a certain festival or set of events.
 1. Clone the git repo - `git clone git://github.com/g4rf/eventkrake_webapp.git` -
 or [download it](https://github.com/g4rf/eventkrake_webapp/zipball/master).
 1. Do the configuration:
-  1. ''graphics''
-  1. Rename ''/config.sample.js'' to ''/config.js''.
-  1. Change the values in the ''/config.js'' to your needs.
-  1. Change the colors in the ''/less/main.less''.
-  1. Change the following in the ''head'' of the ''/index.html'':
-    1. The title tag.
+  1. *graphics*
+  1. Rename `/config.sample.js` to `/config.js`.
+  1. Change the values in the `/config.js` to your needs.
+  1. Change the colors in the `/less/main.less`.
+  1. Change the following in the `head` of the `/index.html`:
+    1. The `title` tag.
 1. Open the index.html in your browser.
 1. Enjoy!
 
@@ -26,6 +26,10 @@ or [download it](https://github.com/g4rf/eventkrake_webapp/zipball/master).
 
 This README.md and inline documentation. Nothing more...
 
+## Uses
+
+* The [jq.gettext.js](https://github.com/g4rf/jq.gettext.js)-jQuery-PlugIn, that
+is capable to translate HTML site on the client with no serverside processing.
 
 ## Contributing
 
