@@ -17,7 +17,7 @@ or [download it](https://github.com/g4rf/eventkrake_webapp/zipball/master).
   1. Change the values in the `/config.js` to your needs.
   1. Change the colors in the `/less/main.less`.
   1. Change the following in the `head` of the `/index.html`:
-    1. The `title` tag.
+     1. The `title` tag.
 1. Open the index.html in your browser.
 1. Enjoy!
 
