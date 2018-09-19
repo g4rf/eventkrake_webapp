@@ -1,4 +1,4 @@
-/* global Config, Locations, Events */
+/* global Config, Locations, Events, EventsList */
 
 var Api = {
     timer: null,
@@ -6,10 +6,9 @@ var Api = {
     /**
      * Gets the events from the api and saves them in the local database.
      * @param {Object} options The parameters for the call, see https://eventkrake.de/
-     * @param {Function} callback A callback to call after all is saved.
      * @returns {jqXHR} The jQuery Ajax request object.
      */
-    getEvents: function(options, callback) {
+    getEvents: function(options) {
         if(typeof options == "undefined") options = {};
         
         options.event_datestart = options.event_datestart ||
@@ -25,19 +24,21 @@ var Api = {
             data: options,
             method: "POST"
         }).done(function(data) {
-            if(data.locations.length > 0) {
+            if(Object.keys(data.locations).length > 0) {
                 // store locations
                 Locations.clear(function() {
                     jQuery.each(data.locations, function(id, location) {
+                        if(! id) return; // falsy entry
                         Locations.setItem(id, location);
                     });
                 });
             }
             
-            if(data.events.length > 0) {
+            if(Object.keys(data.events).length > 0) {
                 // store events
                 Events.clear(function() {
                     jQuery.each(data.events, function(id, event) {
+                        if(! id) return; // falsy entry
                         Events.setItem(id, event);
                     });
                 });

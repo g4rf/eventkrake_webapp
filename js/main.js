@@ -1,4 +1,4 @@
-/* global localforage, Api */
+/* global localforage, Api, Config, EventsList */
 
 /*** do some good stuff from Boilerplate ***/
 MBP.hideUrlBarOnLoad(); // Hide URL Bar
@@ -18,12 +18,22 @@ var Locations = localforage.createInstance({
 /*** load data ***/
 Api.getEvents();
 
+/*** GUI ***/
+$("#app-name").empty().append(Config.appName);
+
+/*** load events ***/
+EventsList.updateEvents();
+
 /*** menu clicks ***/
 $("#menu-bar").on("click", ".button", function() {
-    console.log(this);
     var section = $(this).data("section");
     
     $(".section").addClass("hidden");
     $("#" + section).removeClass("hidden");
+    
+    switch(section) {
+        case "events-list":
+            EventsList.updateEvents();
+            break;
+    }
 });
-

@@ -15,6 +15,7 @@
 @colorWarning: #f88;
 
 @colorFont: #222;
+@colorLightFont: #eee;
 @colorLinks: #45aaa6;
 
 /* ==========================================================================
@@ -106,6 +107,12 @@ html.js #no-js {
    Author's custom styles
    ========================================================================== */
 
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .button {
     cursor: pointer;
 }
@@ -119,18 +126,61 @@ html.js #no-js {
 }
 
 /* structure */
+.section {
+    padding: 110px 5px 5px 5px;
+}
+
+/* top bar */
 #top-bar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 100px;
     background-color: @colorTheme;
+    color: @colorLightFont;    
+
+    #app-name {
+        flex-grow: 2;
+        flex-shrink: 1;
+        font-size: 0.7em;
+        padding: 10px 15px 0 10px;
+        padding: 0 15px 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        color: @colorLightFont;
+        text-align: center;
+        padding: 5px 10px;
+    }
+    .button.tile {
+        padding: 10px 15px;
+        font-weight: bold;
+        font-size: 1.3em;
+    }
+    .button:hover {
+        border-radius: 50%;
+        background-color: rgba(255,255,255,0.5);
+    }
+
+    #menu-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
 }
 
-.section {
-    padding: 110px 5px 5px 5px;
+/* events list */
+#events-list {
+    
 }
+
 
 
 

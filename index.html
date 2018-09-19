@@ -38,7 +38,6 @@
     
     <!-- list of all events -->
     <div class="section" id="events-list">
-        <div class="no-data">Keine Events gefunden.</div>
         <div class="template event">
             <div class="time"></div>
             <div class="title"></div>
@@ -70,9 +69,9 @@
 
     <!-- top bar -->
     <div id="top-bar">
-        <div id="app-name"></div>
-        <div id="small-menu">
-            <div class="button info">&#8505;</div>
+        <div class="flex">
+            <div id="app-name"></div>
+            <div class="button tile info">&#8505;</div>
         </div>
         <div id="menu-bar">
             <div class="button" data-section="events-list">Veranstaltungen</div>
@@ -94,6 +93,7 @@
     <script src="config.js"></script>    
     
     <script src="js/modules/api.js"></script>
+    <script src="js/modules/events-list.js"></script>
     
     <script src="js/main.js"></script>
 </body></html>
