@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js"><head>
+<html class="no-js" lang="de"><head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -34,18 +34,16 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.7.1.min.js"></script>
         
-</head><body>
-    
+</head><body>    
     <!-- list of all events -->
     <div class="section" id="events-list">
         <div class="template event">
             <div class="time"></div>
             <div class="title"></div>
-            <div class="location-name"></div>
+            <div class="location-name"></div>,
             <div class="location-address"></div>
-            <div class="description"></div>            
-            <div class="url"></div>
         </div>
+        <div class="search button">&#128270;</div>
     </div>
 
     <!-- events per location -->
@@ -58,15 +56,13 @@
             <div class="template event">
                 <div class="time"></div>
                 <div class="title"></div>
-                <div class="description"></div>            
-                <div class="url"></div>
             </div>
         </div>
     </div>
 
     <!-- map -->
     <div class="section hidden" id="map"></div>
-
+    
     <!-- top bar -->
     <div id="top-bar">
         <div class="flex">
@@ -80,6 +76,34 @@
         </div>
     </div>
 
+    <!-- template for a whole event -->
+    <div class="template dialog-event">
+        <img />
+        <div class="time"></div>
+        <div class="title"></div>
+        <div class="location">
+            <div class="name"></div>,&nbsp;
+            <div class="address"></div>
+        </div>        
+        <div class="description"></div>
+    </div>
+    
+    <!-- dialog -->
+    <div id="dialog">
+        <div class="content"></div>
+        <div class="buttons">
+            <button class="close">Schließen</button>
+        </div>
+    </div>
+    
+    <!-- dialog -->
+    <div id="search">
+        <b>Suchbegriff:</b>
+        <input type="text" class="term" />
+        <button class="search">Suchen</button>
+        <button class="close">Abbrechen</button>
+    </div>
+    
     <!-- no javascript message -->
     <div id="no-js">Bitte aktiviere JavaScript. Diese WebApp rennt nicht
         ohne.</div>
@@ -92,6 +116,7 @@
     <script src="js/helper.js"></script>
     <script src="config.js"></script>    
     
+    <script src="js/modules/dialog.js"></script>
     <script src="js/modules/api.js"></script>
     <script src="js/modules/events-list.js"></script>
     
