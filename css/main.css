@@ -5,9 +5,11 @@
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
  * Kroc Camen, and the H5BP dev community and team.
  */
-/* ==========================================================================
-   Colors
-   ========================================================================== */
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -32,6 +34,10 @@ textarea {
 body {
   font-size: 1em;
   line-height: 1.4;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 a {
   color: #45aaa6;
@@ -100,9 +106,28 @@ button {
 }
 /* structure */
 .section {
-  padding: 110px 5px 5px 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 110px;
+  padding: 5px;
+  overflow: scroll;
+  overflow-x: hidden;
 }
-/* dialog */
+/* no events */
+.no-events {
+  margin: 20px;
+  text-align: center;
+  color: #222;
+}
+.no-events .rotate {
+  font-size: 2em;
+  animation: spin 2s ease-in-out infinite;
+}
+/* imports */
+.dialog {
+  display: none;
+}
 #dialog {
   display: none;
   flex-direction: column;
@@ -115,7 +140,7 @@ button {
   bottom: 10px;
   background-color: #fff;
   border-radius: 10px;
-  border: solid 1px #904840;
+  border: solid 1px #45aaa6;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 #dialog .buttons {
@@ -125,11 +150,11 @@ button {
   align-items: stretch;
   padding: 5px;
   font-size: 0.8em;
-  border-top: solid 1px #904840;
+  border-top: solid 1px #45aaa6;
 }
 #dialog .content {
   overflow: scroll;
-  overflow-x: none;
+  overflow-x: hidden;
   font-size: 0.9em;
   padding: 5px 5px 15px;
   hyphens: auto;
@@ -159,7 +184,6 @@ button {
   margin-bottom: 1em;
 }
 #search {
-  display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
@@ -170,20 +194,18 @@ button {
   padding: 5px;
   background-color: #fff;
   border-radius: 10px;
-  border: solid 1px #904840;
+  border: solid 1px #45aaa6;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 #search .term {
   margin-bottom: 1em;
   padding: 10px;
 }
-/* top bar */
 #top-bar {
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #904840;
+  background-color: #45aaa6;
   color: #eee;
 }
 #top-bar #app-name {
@@ -210,19 +232,14 @@ button {
   font-weight: bold;
   font-size: 1.3em;
 }
-#top-bar .button:hover {
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-}
 #top-bar #menu-bar {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
 }
-/* events list */
 #events-list .event {
   margin-top: 10px;
-  border-bottom: solid 1px #904840;
+  border-bottom: solid 1px #45aaa6;
   padding-bottom: 10px;
   cursor: pointer;
 }
@@ -247,9 +264,15 @@ button {
   line-height: 2.3em;
   width: 2.5em;
   height: 2.5em;
-  background-color: #904840;
+  background-color: #45aaa6;
   border-radius: 50%;
   border: solid 2px #fff;
+}
+#location-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
 }
 /* ==========================================================================
    Helper classes

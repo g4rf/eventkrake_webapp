@@ -35,34 +35,6 @@
     <script src="js/vendor/modernizr-2.7.1.min.js"></script>
         
 </head><body>    
-    <!-- list of all events -->
-    <div class="section" id="events-list">
-        <div class="template event">
-            <div class="time"></div>
-            <div class="title"></div>
-            <div class="location-name"></div>,
-            <div class="location-address"></div>
-        </div>
-        <div class="search button">&#128270;</div>
-    </div>
-
-    <!-- events per location -->
-    <div class="section hidden" id="location-list">
-        <select class="locations">
-            <option class="no-data">-- keine Orte gefunden --</option>
-        </select>
-        <div class="events-list">
-            <div class="no-data">Keine Events gefunden.</div>
-            <div class="template event">
-                <div class="time"></div>
-                <div class="title"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- map -->
-    <div class="section hidden" id="map"></div>
-    
     <!-- top bar -->
     <div id="top-bar">
         <div class="flex">
@@ -75,7 +47,40 @@
             <div class="button" data-section="map">Was läuft gerade?</div>
         </div>
     </div>
+    
+    <!-- list of all events -->
+    <div class="section" id="events-list">
+        <div class="no-events">
+            <div class="rotate">&#10710;</div>
+            Rufe Daten ab...
+        </div>
+        <div class="template event">
+            <div class="time"></div>
+            <div class="title"></div>
+            <div class="location-name"></div>,
+            <div class="location-address"></div>
+        </div>
+        <div class="search button">&#128270;</div>
+    </div>
 
+    <!-- events per location -->
+    <div class="section hidden" id="location-list">
+        <select class="locations"><option class="no-events">&nbsp;</option></select>
+        <div class="events-list">
+            <div class="no-events">
+                <div class="rotate">&#10710;</div>
+                Rufe Daten ab...
+            </div>
+            <div class="template event">
+                <div class="time"></div>
+                <div class="title"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- map -->
+    <div class="section hidden" id="map"></div>
+    
     <!-- template for a whole event -->
     <div class="template dialog-event">
         <img />
@@ -89,19 +94,20 @@
     </div>
     
     <!-- dialog -->
-    <div id="dialog">
+    <div id="dialog" class="dialog">
         <div class="content"></div>
         <div class="buttons">
             <button class="close">Schließen</button>
         </div>
     </div>
     
-    <!-- dialog -->
-    <div id="search">
+    <!-- search -->
+    <div id="search" class="dialog">
         <b>Suchbegriff:</b>
         <input type="text" class="term" />
         <button class="search">Suchen</button>
-        <button class="close">Abbrechen</button>
+        <button class="reset">Zurücksetzen</button>
+        <button class="close">Schließen</button>
     </div>
     
     <!-- no javascript message -->

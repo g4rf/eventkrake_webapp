@@ -1,0 +1,77 @@
+.dialog {
+  display: none;
+}
+#dialog {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: solid 1px #45aaa6;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+}
+#dialog .buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 5px;
+  font-size: 0.8em;
+  border-top: solid 1px #45aaa6;
+}
+#dialog .content {
+  overflow: scroll;
+  overflow-x: hidden;
+  font-size: 0.9em;
+  padding: 5px 5px 15px;
+  hyphens: auto;
+}
+.dialog-event {
+  margin-bottom: 15px;
+}
+.dialog-event img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1em;
+}
+.dialog-event .title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+.dialog-event .location {
+  display: flex;
+  font-size: 0.8em;
+  margin-bottom: 1em;
+}
+.dialog-event .time {
+  font-size: 0.8em;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 1em;
+}
+#search {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  position: fixed;
+  top: 25%;
+  left: 5%;
+  right: 5%;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: solid 1px #45aaa6;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+}
+#search .term {
+  margin-bottom: 1em;
+  padding: 10px;
+}
+/*# sourceMappingURL=dialogs.css.map */

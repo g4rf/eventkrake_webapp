@@ -1,0 +1,40 @@
+@import "colors";
+
+#events-list {
+    .event {
+        margin-top: 10px;
+        border-bottom: solid 1px @colorTheme;
+        padding-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    .time {
+        font-size: 0.7em;
+    }
+    
+    .title {
+        margin: 5px;
+        font-weight: bold;
+    }
+    
+    .location-address, .location-name {
+        display: inline-block;
+        font-size: 0.8em;
+    }
+    
+    .search {
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 2.3em;
+        width: 2.5em;
+        height: 2.5em;
+        
+        background-color: @colorTheme;
+        border-radius: 50%;
+        border: solid 2px @colorBackground;
+    }
+}

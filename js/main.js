@@ -21,6 +21,8 @@ Api.getEvents();
 /*** GUI ***/
 $("#app-name").empty().append(Config.appName);
 
+
+
 /*** load events ***/
 EventsList.updateEvents();
 
@@ -33,6 +35,9 @@ $("#menu-bar").on("click", ".button", function() {
     
     switch(section) {
         case "events-list":
+            EventsList.updateEvents();
+            break;
+        case "location-list":
             EventsList.updateEvents();
             break;
     }

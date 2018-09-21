@@ -1,0 +1,32 @@
+#events-list .event {
+  margin-top: 10px;
+  border-bottom: solid 1px #45aaa6;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+#events-list .time {
+  font-size: 0.7em;
+}
+#events-list .title {
+  margin: 5px;
+  font-weight: bold;
+}
+#events-list .location-address,
+#events-list .location-name {
+  display: inline-block;
+  font-size: 0.8em;
+}
+#events-list .search {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 2.3em;
+  width: 2.5em;
+  height: 2.5em;
+  background-color: #45aaa6;
+  border-radius: 50%;
+  border: solid 2px #fff;
+}
+/*# sourceMappingURL=events-list.css.map */

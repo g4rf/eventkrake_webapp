@@ -1,7 +1,7 @@
 /* global Events, Locations, Config, Dialog */
 
 var EventsList = {
-    updateEvents: function() {
+    updateEvents: function(filter) {
         var eventsList = $("#events-list");
                 
         // get all event elements and save their ids
@@ -15,9 +15,19 @@ var EventsList = {
                 window.setTimeout(EventsList.updateEvents, 1000);
                 return;
             }
+            $(".no-events").remove();
             
             // iterate over the database and update/add elements
             Events.iterate(function(event, key, index) {
+                if(typeof filter != "undefined") {
+                    filter = filter.toLowerCase();
+                    if(event.title.toLowerCase().indexOf(filter) == -1 &&
+                       event.text.toLowerCase().indexOf(filter) == -1 &&
+                       event.excerpt.toLowerCase().indexOf(filter) == -1) {
+                        return;
+                    }
+                }
+                
                 var element = $("#el" + event.id);
                 if(element.length > 0) {
                     // update element
@@ -53,6 +63,11 @@ var EventsList = {
                 });
             });
         });
+    },
+    
+    clear: function() {
+        var eventsList = $("#events-list");
+        $(".event", eventsList).not(".template").remove();
     },
     
     fillElement: function(element, event) {
@@ -110,13 +125,21 @@ $("#events-list").on("click", ".event", function() {
 });
 
 $("#events-list .button.search").click(function() {
+    $(".dialog").css("display", "none");
     $("#search").css("display", "flex");
     $("#search .term").focus();
     $("#search .term").select();
 });
 
 $("#search button.search").click(function() {
-    // TODO: Suche implementieren
+    EventsList.clear();
+    EventsList.updateEvents($("#search .term").val());
+    $("#search").css("display", "none");
+});
+
+$("#search button.reset").click(function() {
+    EventsList.updateEvents();
+    $("#search").css("display", "none");
 });
 
 $("#search button.close").click(function() {
