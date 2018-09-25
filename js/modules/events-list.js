@@ -15,7 +15,7 @@ var EventsList = {
                 window.setTimeout(EventsList.updateEvents, 1000);
                 return;
             }
-            $(".no-events").remove();
+            $(".no-events", eventsList).remove();
             
             // iterate over the database and update/add elements
             Events.iterate(function(event, key, index) {
@@ -104,7 +104,7 @@ $("#events-list").on("click", ".event", function() {
     
     // infos
     $(".title", dialog).append(event.title);
-    $(".description", dialog).append(event.text);
+    $(".description", dialog).append(event.text.replace(/\n/, "<br />"));
     
     // time
     var start = new Date(event.datetime);

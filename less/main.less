@@ -103,8 +103,12 @@ html.js #no-js {
    Author's custom styles
    ========================================================================== */
 
-button {
+button, select {
     padding: 5px;
+}
+
+img {
+    max-width: 100%;
 }
 
 .flex {
@@ -127,13 +131,11 @@ button {
 
 /* structure */
 .section {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
     padding: 5px;
-    overflow: scroll;
-    overflow-x: hidden;
 }
 
 /* no events */
@@ -148,12 +150,200 @@ button {
     }
 }
 
-/* imports */
+/* events */
+.event {
+    margin-top: 10px;
+    border-bottom: solid 1px @colorTheme;
+    padding-bottom: 10px;
+    cursor: pointer;
+    
+    .time {
+        font-size: 0.7em;
+    }
+    
+    .title {
+        margin: 5px;
+        font-weight: bold;
+    }
+    
+    .location-address, .location-name {
+        display: inline-block;
+        font-size: 0.8em;
+    }
+    
+    .excerpt {
+        margin: 0 0 10px 5px;
+        font-size: 0.9em;
+    }
+}
 
-@import "dialogs";
-@import "top-bar";
-@import "events-list";
-@import "location-list";
+/* dialogs */
+.dialog {
+    display: none;
+}
+
+#dialog {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    
+    background-color: @colorBackground;
+    border-radius: 10px;
+    border: solid 1px @colorTheme;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        padding: 5px;
+        font-size: 0.8em;
+        border-top: solid 1px @colorTheme;
+    }
+    
+    .content {
+        overflow: scroll;
+        overflow-x: hidden;
+        
+        font-size: 0.9em;
+        padding: 5px 5px 15px;
+        
+        
+        hyphens: auto;
+    }
+}
+
+.dialog-event {
+    margin-bottom: 15px;
+    
+    img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1em;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .location {
+        font-size: 0.8em;
+        margin-bottom: 1em;
+    }
+    
+    .time {
+        font-size: 0.8em;
+        font-weight: bold;
+        font-style: italic;
+        margin-bottom: 1em;
+    }
+}
+
+#search {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    
+    position: fixed;
+    top: 25%;
+    left: 5%;
+    right: 5%;    
+    padding: 5px;
+    
+    background-color: @colorBackground;
+    border-radius: 10px;
+    border: solid 1px @colorTheme;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    
+    .term {
+        margin-bottom: 1em;
+        padding: 10px;
+    }
+}
+
+/* top-bar */
+#top-bar {
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: @colorTheme;
+    color: @colorLightFont;    
+
+    .app-name {
+        flex-grow: 2;
+        flex-shrink: 1;
+        font-size: 0.7em;
+        padding: 0 15px 0 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        color: @colorLightFont;
+        text-align: center;
+        padding: 5px 10px;
+    }
+    .button.tile {
+        padding: 10px 15px;
+        font-weight: bold;
+        font-size: 1.3em;
+    }
+
+    #menu-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+}
+
+/* events-list */
+#events-list {
+    overflow: auto;
+    overflow-x: hidden;
+    
+    .search {
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        
+        text-align: center;
+        font-size: 1.5em;
+        line-height: 2.3em;
+        width: 2.5em;
+        height: 2.5em;
+        
+        background-color: @colorTheme;
+        border-radius: 50%;
+        border: solid 2px @colorBackground;
+    }
+}
+
+/* location-list */
+#location-list {
+    .locations {
+        flex-shrink: 0;
+    }
+    
+    .events-list {
+        overflow: auto;
+        overflow-x: hidden;
+    }
+}
 
 
 

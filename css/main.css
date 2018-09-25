@@ -87,8 +87,12 @@ html.js #no-js {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-button {
+button,
+select {
   padding: 5px;
+}
+img {
+  max-width: 100%;
 }
 .flex {
   display: flex;
@@ -106,13 +110,11 @@ button {
 }
 /* structure */
 .section {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
   padding: 5px;
-  overflow: scroll;
-  overflow-x: hidden;
 }
 /* no events */
 .no-events {
@@ -124,7 +126,30 @@ button {
   font-size: 2em;
   animation: spin 2s ease-in-out infinite;
 }
-/* imports */
+/* events */
+.event {
+  margin-top: 10px;
+  border-bottom: solid 1px #45aaa6;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.event .time {
+  font-size: 0.7em;
+}
+.event .title {
+  margin: 5px;
+  font-weight: bold;
+}
+.event .location-address,
+.event .location-name {
+  display: inline-block;
+  font-size: 0.8em;
+}
+.event .excerpt {
+  margin: 0 0 10px 5px;
+  font-size: 0.9em;
+}
+/* dialogs */
 .dialog {
   display: none;
 }
@@ -173,7 +198,6 @@ button {
   margin-bottom: 0.5em;
 }
 .dialog-event .location {
-  display: flex;
   font-size: 0.8em;
   margin-bottom: 1em;
 }
@@ -201,6 +225,7 @@ button {
   margin-bottom: 1em;
   padding: 10px;
 }
+/* top-bar */
 #top-bar {
   top: 0;
   left: 0;
@@ -208,11 +233,10 @@ button {
   background-color: #45aaa6;
   color: #eee;
 }
-#top-bar #app-name {
+#top-bar .app-name {
   flex-grow: 2;
   flex-shrink: 1;
   font-size: 0.7em;
-  padding: 10px 15px 0 10px;
   padding: 0 15px 0 10px;
   white-space: nowrap;
   overflow: hidden;
@@ -237,23 +261,10 @@ button {
   justify-content: space-between;
   align-items: stretch;
 }
-#events-list .event {
-  margin-top: 10px;
-  border-bottom: solid 1px #45aaa6;
-  padding-bottom: 10px;
-  cursor: pointer;
-}
-#events-list .time {
-  font-size: 0.7em;
-}
-#events-list .title {
-  margin: 5px;
-  font-weight: bold;
-}
-#events-list .location-address,
-#events-list .location-name {
-  display: inline-block;
-  font-size: 0.8em;
+/* events-list */
+#events-list {
+  overflow: auto;
+  overflow-x: hidden;
 }
 #events-list .search {
   position: fixed;
@@ -268,11 +279,13 @@ button {
   border-radius: 50%;
   border: solid 2px #fff;
 }
-#location-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
+/* location-list */
+#location-list .locations {
+  flex-shrink: 0;
+}
+#location-list .events-list {
+  overflow: auto;
+  overflow-x: hidden;
 }
 /* ==========================================================================
    Helper classes
@@ -372,4 +385,3 @@ textarea[contenteditable] {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
   /* Style adjustments for viewports that meet the condition */
 }
-/*# sourceMappingURL=main.css.map */

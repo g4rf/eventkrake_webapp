@@ -38,13 +38,13 @@
     <!-- top bar -->
     <div id="top-bar">
         <div class="flex">
-            <div id="app-name"></div>
+            <div class="app-name"></div>
             <div class="button tile info">&#8505;</div>
         </div>
         <div id="menu-bar">
             <div class="button" data-section="events-list">Veranstaltungen</div>
             <div class="button" data-section="location-list">Orte</div>
-            <div class="button" data-section="map">Was läuft gerade?</div>
+            <!--div class="button" data-section="map">Was läuft gerade?</div-->
         </div>
     </div>
     
@@ -65,7 +65,7 @@
 
     <!-- events per location -->
     <div class="section hidden" id="location-list">
-        <select class="locations"><option class="no-events">&nbsp;</option></select>
+        <select class="locations"></select>
         <div class="events-list">
             <div class="no-events">
                 <div class="rotate">&#10710;</div>
@@ -74,25 +74,14 @@
             <div class="template event">
                 <div class="time"></div>
                 <div class="title"></div>
+                <p class="excerpt"></p>
             </div>
         </div>
     </div>
 
     <!-- map -->
     <div class="section hidden" id="map"></div>
-    
-    <!-- template for a whole event -->
-    <div class="template dialog-event">
-        <img />
-        <div class="time"></div>
-        <div class="title"></div>
-        <div class="location">
-            <div class="name"></div>,&nbsp;
-            <div class="address"></div>
-        </div>        
-        <div class="description"></div>
-    </div>
-    
+        
     <!-- dialog -->
     <div id="dialog" class="dialog">
         <div class="content"></div>
@@ -110,6 +99,31 @@
         <button class="close">Schließen</button>
     </div>
     
+    <!-- template for a whole event -->
+    <div class="template dialog-event">
+        <img />
+        <div class="time"></div>
+        <div class="title"></div>
+        <div class="location">
+            <div class="name"></div>
+            <div class="address"></div>
+        </div>        
+        <div class="description"></div>
+    </div>
+    
+    <!-- impress, datenschutz etc. -->
+    <div class="template dialog-impress">
+        <h2>Eventkrake WebApp</h2>
+        <ul>
+            <li>Programmierung: <a href="https://eventkrake.de">eventkrake.de</a></li>
+            <li><a href="https://www.kultur-sucht-raum.de/impressum/">Impressum</a></li>
+            <li><a href="https://www.kultur-sucht-raum.de/datenschutzerklaerung/">Datenschutzerklärung</a></li>
+        </ul>
+        
+        <h2 class="app-name"></h2>
+        <div class="app-text"></div>
+    </div>
+    
     <!-- no javascript message -->
     <div id="no-js">Bitte aktiviere JavaScript. Diese WebApp rennt nicht
         ohne.</div>
@@ -125,6 +139,7 @@
     <script src="js/modules/dialog.js"></script>
     <script src="js/modules/api.js"></script>
     <script src="js/modules/events-list.js"></script>
+    <script src="js/modules/location-list.js"></script>
     
     <script src="js/main.js"></script>
 </body></html>
