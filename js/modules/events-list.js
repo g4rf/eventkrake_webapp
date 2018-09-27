@@ -30,30 +30,38 @@ var EventsList = {
                 
                 var element = $("#el" + event.id);
                 if(element.length > 0) {
-                    // update element
-                    EventsList.fillElement(element, event);
-
+                    // remove element if outdated
+                    if(new Date(event.datetime_end) < new Date()) {
+                        element.remove();
+                        
+                    } else { // update element
+                        EventsList.fillElement(element, event);
+                    }
+                    
                     // remove existing from the event elements array
                     var i = oldEvents.indexOf("el" + key);
                     if (index > -1) {
                         oldEvents.splice(i, 1);
                     }
                 } else {
-                    // add element
-                    element = $(".event.template", eventsList).clone()
-                            .removeClass("template");
-                    EventsList.fillElement(element, event);
-                    // find position
-                    $(".event", eventsList).not(".template").each(function(i, e) {
-                        if(new Date(event.datetime) < 
-                                new Date($(e).data("event").datetime)) {
-                            element.insertBefore(e);
-                            return false;
+                    // only if not outdated
+                    if(new Date(event.datetime_end) > new Date()) {
+                        // add element
+                        element = $(".event.template", eventsList).clone()
+                                .removeClass("template");
+                        EventsList.fillElement(element, event);
+                        // find position
+                        $(".event", eventsList).not(".template").each(function(i, e) {
+                            if(new Date(event.datetime) < 
+                                    new Date($(e).data("event").datetime)) {
+                                element.insertBefore(e);
+                                return false;
+                            }
+                        });
+                        // check if inserted
+                        if($("#el" + event.id).length == 0) {
+                            eventsList.append(element);
                         }
-                    });
-                    // check if inserted
-                    if($("#el" + event.id).length == 0) {
-                        eventsList.append(element);
                     }
                 }
             }).then(function() {
