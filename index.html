@@ -31,6 +31,7 @@
     <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
 
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="js/vendor/leaflet/leaflet.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.7.1.min.js"></script>
         
@@ -42,9 +43,9 @@
             <div class="button tile info">&#8505;</div>
         </div>
         <div id="menu-bar">
-            <div class="button" data-section="events-list">Veranstaltungen</div>
+            <div class="button highlighted" data-section="events-list">Veranstaltungen</div>
             <div class="button" data-section="location-list">Orte</div>
-            <!--div class="button" data-section="map">Was läuft gerade?</div-->
+            <div class="button" data-section="map-section">Karte</div>
         </div>
     </div>
     
@@ -80,7 +81,7 @@
     </div>
 
     <!-- map -->
-    <div class="section hidden" id="map"></div>
+    <div class="section hidden" id="map-section"><div id="map"></div></div>
         
     <!-- dialog -->
     <div id="dialog" class="dialog">
@@ -132,6 +133,11 @@
     <script src="js/vendor/jquery-2.1.0.min.js"></script>
     <script src="js/vendor/jq.gettext.js"></script>
     <script src="js/vendor/localforage.min.js"></script>
+    <script src="js/vendor/polyfill.min.js"></script>
+    <script src="js/vendor/fetch.umd.js"></script>
+    <script src="js/vendor/pouchdb-7.0.0.min.js"></script>
+    <script src="js/vendor/leaflet/leaflet-src.js"></script>
+    <script src="js/vendor/leaflet/L.TileLayer.PouchDBCached.js"></script>
 
     <script src="js/helper.js"></script>
     <script src="config.js"></script>    
@@ -140,6 +146,7 @@
     <script src="js/modules/api.js"></script>
     <script src="js/modules/events-list.js"></script>
     <script src="js/modules/location-list.js"></script>
+    <script src="js/modules/map.js"></script>
     
     <script src="js/main.js"></script>
 </body></html>

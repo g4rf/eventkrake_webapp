@@ -1,4 +1,4 @@
-/* global Events, Locations, Config, Dialog */
+/* global Events, Locations, Config, Dialog, Helper */
 
 var LocationList = {
     updateLocations: function() {
@@ -94,35 +94,7 @@ var LocationList = {
 };
 
 $("#location-list").on("click", ".event", function() {
-    var dialog = $(".dialog-event.template").clone().removeClass("template");
-    var event = $(this).data("event");
-    
-    // image
-    $("img", dialog).attr({
-        "src": event.image,
-        "alt": event.title
-    })
-    
-    // infos
-    $(".title", dialog).append(event.title);
-    $(".description", dialog).append(event.text.replace(/\n/, "<br />"));
-    
-    // time
-    var start = new Date(event.datetime);
-    var end = new Date(event.datetime_end);
-    $(".time", dialog).append(start.toLocaleString(undefined, 
-        Config.startDateFormat) + " - " + 
-        end.toLocaleString(undefined, Config.endDateFormat));
-    
-    // location
-    Locations.getItem(event.locationid, function(err, location) {
-        if(location == null) return;
-        $(".location .name", dialog).append(location.name);
-        $(".location .address", dialog).append(location.address);
-    });
-    
-    // show dialog
-    Dialog.show(dialog);
+    Helper.showEvent($(this).data("event"));
 });
 
 $("#location-list .locations").on("change", function() {

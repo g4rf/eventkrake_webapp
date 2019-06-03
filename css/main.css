@@ -35,6 +35,7 @@ body {
   font-size: 1em;
   line-height: 1.4;
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -50,6 +51,12 @@ a:hover {
  */
 img {
   vertical-align: middle;
+}
+/*
+ * Hide empty images
+ */
+img[src=""] {
+  display: none;
 }
 /*
  * Remove default fieldset styles.
@@ -129,7 +136,7 @@ img {
 /* events */
 .event {
   margin-top: 10px;
-  border-bottom: solid 1px #45aaa6;
+  border-bottom: solid 1px #bccc0c;
   padding-bottom: 10px;
   cursor: pointer;
 }
@@ -165,7 +172,7 @@ img {
   bottom: 10px;
   background-color: #fff;
   border-radius: 10px;
-  border: solid 1px #45aaa6;
+  border: solid 1px #bccc0c;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 #dialog .buttons {
@@ -175,7 +182,7 @@ img {
   align-items: stretch;
   padding: 5px;
   font-size: 0.8em;
-  border-top: solid 1px #45aaa6;
+  border-top: solid 1px #bccc0c;
 }
 #dialog .content {
   overflow: scroll;
@@ -218,7 +225,7 @@ img {
   padding: 5px;
   background-color: #fff;
   border-radius: 10px;
-  border: solid 1px #45aaa6;
+  border: solid 1px #bccc0c;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 #search .term {
@@ -230,7 +237,7 @@ img {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #45aaa6;
+  background-color: #bccc0c;
   color: #eee;
 }
 #top-bar .app-name {
@@ -249,12 +256,17 @@ img {
   flex-grow: 1;
   color: #eee;
   text-align: center;
-  padding: 5px 10px;
+  padding: 15px 10px;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 #top-bar .button.tile {
   padding: 10px 15px;
   font-weight: bold;
   font-size: 1.3em;
+}
+#top-bar .button.highlighted {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 #top-bar #menu-bar {
   display: flex;
@@ -275,7 +287,7 @@ img {
   line-height: 2.3em;
   width: 2.5em;
   height: 2.5em;
-  background-color: #45aaa6;
+  background-color: #bccc0c;
   border-radius: 50%;
   border: solid 2px #fff;
 }
@@ -286,6 +298,15 @@ img {
 #location-list .events-list {
   overflow: auto;
   overflow-x: hidden;
+}
+/* map */
+#map-section {
+  position: relative;
+  flex: 1;
+  padding: 0;
+}
+#map {
+  flex: 1;
 }
 /* ==========================================================================
    Helper classes

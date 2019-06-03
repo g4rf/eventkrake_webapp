@@ -1,4 +1,4 @@
-/* global localforage, Api, Config, EventsList, LocationList, Dialog */
+/* global localforage, Api, Config, EventsList, LocationList, Dialog, Map */
 
 /*** do some good stuff from Boilerplate ***/
 MBP.hideUrlBarOnLoad(); // Hide URL Bar
@@ -32,12 +32,18 @@ $("#menu-bar").on("click", ".button", function() {
     $(".section").addClass("hidden");
     $("#" + section).removeClass("hidden");
     
+    $("#menu-bar .button").removeClass("highlighted");
+    $(this).addClass("highlighted");
+    
     switch(section) {
         case "events-list":
             EventsList.updateEvents();
             break;
         case "location-list":
             LocationList.updateLocations();
+            break;
+        case "map-section":
+            Map.initialize();
             break;
     }
 });

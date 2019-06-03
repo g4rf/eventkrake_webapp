@@ -37,6 +37,7 @@ body {
     line-height: 1.4;
     
     height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -55,6 +56,14 @@ a:hover {
 
 img {
     vertical-align: middle;
+}
+
+/*
+ * Hide empty images
+ */
+
+img[src=""] {
+    display: none;
 }
 
 /*
@@ -277,7 +286,7 @@ img {
     left: 0;
     right: 0;
     background-color: @colorTheme;
-    color: @colorLightFont;    
+    color: @colorLightFont;
 
     .app-name {
         flex-grow: 2;
@@ -296,12 +305,17 @@ img {
         flex-grow: 1;
         color: @colorLightFont;
         text-align: center;
-        padding: 5px 10px;
+        padding: 15px 10px;
+        font-size: 0.8em;
+        font-weight: bold;
     }
     .button.tile {
         padding: 10px 15px;
         font-weight: bold;
         font-size: 1.3em;
+    }
+    .button.highlighted {
+        background-color: rgba(255, 255, 255, 0.3);
     }
 
     #menu-bar {
@@ -345,7 +359,15 @@ img {
     }
 }
 
-
+/* map */
+#map-section {
+    position: relative;
+    flex: 1;
+    padding: 0;
+}
+#map {
+    flex: 1;
+}
 
 
 

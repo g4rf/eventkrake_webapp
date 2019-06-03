@@ -1,7 +1,41 @@
+/* global Config, Locations, Dialog */
+
+var Helper = {
+    showEvent: function(event) {
+        var dialog = $(".dialog-event.template").clone().removeClass("template");
+
+        // image
+        $("img", dialog).attr({
+            "src": event.image,
+            "alt": event.title
+        });
+
+        // infos
+        $(".title", dialog).append(event.title);
+        $(".description", dialog).append(event.text.replace(/\n/, "<br />"));
+
+        // time
+        var start = new Date(event.datetime);
+        var end = new Date(event.datetime_end);
+        $(".time", dialog).append(start.toLocaleString(undefined, 
+            Config.startDateFormat) + " - " + 
+            end.toLocaleString(undefined, Config.endDateFormat));
+
+        // location
+        Locations.getItem(event.locationid, function(err, location) {
+            if(location == null) return;
+            $(".location .name", dialog).append(location.name);
+            $(".location .address", dialog).append(location.address);
+        });
+
+        // show dialog
+        Dialog.show(dialog);
+    }
+};
+
 /**
  * MBP - Mobile boilerplate helper functions
  */
-
 (function(document) {
 
     window.MBP = window.MBP || {};
