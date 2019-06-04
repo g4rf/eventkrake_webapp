@@ -196,6 +196,7 @@ var Map = {
     },
     
     showEventsLayer: function() {
+        Map.highlightLayer.clearLayers();
         Map.locationsLayer.remove();
         Map.map.addLayer(Map.eventsLayer);
         jQuery("#map .switch-layer").removeClass("selected");
@@ -203,6 +204,7 @@ var Map = {
     },
     
     showLocationsLayer: function() {
+        Map.highlightLayer.clearLayers();
         Map.eventsLayer.remove();
         Map.map.addLayer(Map.locationsLayer);
         jQuery("#map .switch-layer").removeClass("selected");
