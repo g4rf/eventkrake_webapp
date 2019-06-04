@@ -2,28 +2,35 @@
 
 var LocationList = {
     updateLocations: function() {
-        var locationList = $("#location-list");
-        var locations = $(".locations", locationList);
+        Locations.length().then(function(n) {
+            if(n == 0) { // no events yet, check in 1 sec again
+                window.setTimeout(LocationList.updateLocations, 1000);
+                return;
+            }
         
-        // save current selection, empty list
-        var currentLocation = locations.val();
-        locations.empty();
-        
-        // iterate over locations
-        Locations.iterate(function(location, key, index) {
-            $("<option />").val(location.id).append(location.name)
-                    .appendTo(locations);
-        }).then(function() {
-            // sort locations
-            var locationOptions = $("option", locations);
-            locationOptions.sort(function(a, b) {
-                return a.text.localeCompare(b.text, "de", { sensitivity: 'base' });
+            var locationList = $("#location-list");
+            var locations = $(".locations", locationList);
+
+            // save current selection, empty list
+            var currentLocation = locations.val();
+            locations.empty();
+
+            // iterate over locations
+            Locations.iterate(function(location, key, index) {
+                $("<option />").val(location.id).append(location.name)
+                        .appendTo(locations);
+            }).then(function() {
+                // sort locations
+                var locationOptions = $("option", locations);
+                locationOptions.sort(function(a, b) {
+                    return a.text.localeCompare(b.text, "de", { sensitivity: 'base' });
+                });
+                locations.empty().append(locationOptions);
+                if(currentLocation) locations.val(currentLocation);
+                else locations.prop("selectedIndex", 0);
+
+                LocationList.updateEvents();
             });
-            locations.empty().append(locationOptions);
-            if(currentLocation) locations.val(currentLocation);
-            else locations.prop("selectedIndex", 0);
-            
-            LocationList.updateEvents();
         });
     },
     
@@ -85,10 +92,14 @@ var LocationList = {
         if(event.excerpt.length > 0) {
             $(".excerpt", element).empty().append(event.excerpt);
         } else {
-            $(".excerpt", element).empty().append(
-                $("<div>" + event.text + "</div>").text()
-                    .substring(0,100) + "…"
-            );
+            if(event.text.length > 0) {                
+                $(".excerpt", element).empty().append(
+                    $("<div>" + event.text + "</div>").text()
+                        .substring(0,100) + "…"
+                );
+            } else {
+                jQuery(".excerpt", element).hide();
+            }
         }
     }
 };

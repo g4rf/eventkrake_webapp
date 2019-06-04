@@ -1,4 +1,4 @@
-/* global Config, Locations, Dialog */
+/* global Config, Locations, Dialog, Map */
 
 var Helper = {
     showEvent: function(event) {
@@ -24,7 +24,10 @@ var Helper = {
         // location
         Locations.getItem(event.locationid, function(err, location) {
             if(location == null) return;
-            $(".location .name", dialog).append(location.name);
+            $(".location .name", dialog).append(location.name).click(function() {
+                Map.openLocationOnMap(location);
+                Dialog.close();
+            });
             $(".location .address", dialog).append(location.address);
         });
 

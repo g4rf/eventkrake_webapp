@@ -18,19 +18,17 @@ var Locations = localforage.createInstance({
 /*** load data ***/
 Api.getEvents();
 
+/*** load events and locations ***/
+EventsList.updateEvents();
+LocationList.updateLocations();
+
 /*** GUI ***/
 $(".app-name").empty().append(Config.appName);
 $(".app-text").empty().append(Config.appText);
 
-/*** load events ***/
-EventsList.updateEvents();
-
 /*** menu clicks ***/
 $("#menu-bar").on("click", ".button", function() {
     var section = $(this).data("section");
-    
-    $(".section").addClass("hidden");
-    $("#" + section).removeClass("hidden");
     
     $("#menu-bar .button").removeClass("highlighted");
     $(this).addClass("highlighted");
@@ -46,6 +44,9 @@ $("#menu-bar").on("click", ".button", function() {
             Map.initialize();
             break;
     }
+    
+    $(".section").addClass("hidden");
+    $("#" + section).removeClass("hidden");
 });
 
 /*** tile button clicks ***/

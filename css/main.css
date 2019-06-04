@@ -166,6 +166,7 @@ img {
   justify-content: space-between;
   align-items: stretch;
   position: fixed;
+  z-index: 1000;
   top: 10px;
   left: 10px;
   right: 10px;
@@ -207,6 +208,11 @@ img {
 .dialog-event .location {
   font-size: 0.8em;
   margin-bottom: 1em;
+}
+.dialog-event .location .name {
+  color: #45aaa6;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .dialog-event .time {
   font-size: 0.8em;
@@ -307,6 +313,61 @@ img {
 }
 #map {
   flex: 1;
+}
+#map .locate {
+  cursor: pointer;
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  font-size: 30px;
+  line-height: 28px;
+  text-align: center;
+}
+#map .locate.on {
+  background-color: #b22222;
+  color: #fff;
+}
+#map .location-point {
+  background-color: #0078A8;
+  border-radius: 50%;
+  width: 3px;
+  height: 3px;
+}
+#map .switch-layer {
+  cursor: pointer;
+  background-color: #fff;
+  line-height: 1.4em;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+#map .switch-layer.show-events.selected {
+  background-color: #eca979;
+}
+#map .switch-layer.show-locations.selected {
+  background-color: #e6e600;
+}
+#map .marker {
+  width: 4.4vh !important;
+  height: 4.4vh !important;
+  margin-left: -2.2vh !important;
+  margin-top: -2.2vh !important;
+  border: solid 2px;
+  border-color: rgba(128, 128, 128, 0.8);
+  border-radius: 50%;
+}
+#map .location {
+  background-color: #e6e600;
+}
+#map .event {
+  background-color: #eca979;
+}
+#map .marker.highlight {
+  width: 6vh !important;
+  height: 6vh !important;
+  margin-left: -3vh !important;
+  margin-top: -3vh !important;
+  border: solid 5px #b22222;
 }
 /* ==========================================================================
    Helper classes
