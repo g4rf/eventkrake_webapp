@@ -58,8 +58,8 @@ var LocationList = {
             // find position
             var inserted = false;
             $(".event", eventsList).not(".template").each(function(i, e) {
-                if(new Date(event.datetime) < 
-                        new Date($(e).data("event").datetime)) {
+                if(new Date(event.datetime.replace(" ", "T")) < 
+                        new Date($(e).data("event").datetime.replace(" ", "T"))) {
                     element.insertBefore(e);
                     inserted = true;
                     return false;
@@ -81,8 +81,8 @@ var LocationList = {
         $(".title", element).empty().append(event.title);
         
         // time
-        var start = new Date(event.datetime);
-        var end = new Date(event.datetime_end);
+        var start = new Date(event.datetime.replace(" ", "T"));
+        var end = new Date(event.datetime_end.replace(" ", "T"));
         var time = start.toLocaleString(undefined, Config.startDateFormat);
         time += " - ";
         time += end.toLocaleString(undefined, Config.endDateFormat);

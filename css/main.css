@@ -31,13 +31,32 @@ select,
 textarea {
   color: #222;
 }
+html,
+body {
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+}
 body {
   font-size: 1em;
   line-height: 1.4;
-  height: 100vh;
-  width: 100%;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flex;
+  /* Microsoft */
+  display: -webkit-flex;
+  /* NEW - Chrome */
   display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
   align-items: stretch;
 }
 a {
@@ -102,8 +121,22 @@ img {
   max-width: 100%;
 }
 .flex {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flex;
+  /* Microsoft */
+  display: -webkit-flex;
+  /* NEW - Chrome */
   display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
 }
 .button {
@@ -117,8 +150,22 @@ img {
 }
 /* structure */
 .section {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flex;
+  /* Microsoft */
+  display: -webkit-flex;
+  /* NEW - Chrome */
   display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
   align-items: stretch;
   overflow: hidden;
   padding: 5px;
@@ -162,8 +209,17 @@ img {
 }
 #dialog {
   display: none;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
   align-items: stretch;
   position: fixed;
   z-index: 1000;
@@ -177,9 +233,26 @@ img {
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
 }
 #dialog .buttons {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flex;
+  /* Microsoft */
+  display: -webkit-flex;
+  /* NEW - Chrome */
   display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
   align-items: stretch;
   padding: 5px;
   font-size: 0.8em;
@@ -221,8 +294,17 @@ img {
   margin-bottom: 1em;
 }
 #search {
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
   align-items: stretch;
   position: fixed;
   top: 25%;
@@ -247,7 +329,13 @@ img {
   color: #eee;
 }
 #top-bar .app-name {
+  -webkit-flex-grow: 2;
+  -moz-flex-grow: 2;
+  -ms-flex-grow: 2;
   flex-grow: 2;
+  -webkit-flex-shrink: 1;
+  -moz-flex-shrink: 1;
+  -ms-flex-shrink: 1;
   flex-shrink: 1;
   font-size: 0.7em;
   padding: 0 15px 0 10px;
@@ -256,9 +344,26 @@ img {
   text-overflow: ellipsis;
 }
 #top-bar .button {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flex;
+  /* Microsoft */
+  display: -webkit-flex;
+  /* NEW - Chrome */
   display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
   align-items: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
   justify-content: center;
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-grow: 1;
   flex-grow: 1;
   color: #eee;
   text-align: center;
@@ -275,8 +380,22 @@ img {
   background-color: rgba(255, 255, 255, 0.3);
 }
 #top-bar #menu-bar {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flex;
+  /* Microsoft */
+  display: -webkit-flex;
+  /* NEW - Chrome */
   display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
   justify-content: space-between;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
   align-items: stretch;
 }
 /* events-list */
@@ -299,6 +418,9 @@ img {
 }
 /* location-list */
 #location-list .locations {
+  -webkit-flex-shrink: 0;
+  -moz-flex-shrink: 0;
+  -ms-flex-shrink: 0;
   flex-shrink: 0;
 }
 #location-list .events-list {
@@ -308,10 +430,26 @@ img {
 /* map */
 #map-section {
   position: relative;
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;
+  /* OLD - Firefox 19- */
+  -webkit-flex: 1;
+  /* Chrome */
+  -ms-flex: 1;
+  /* IE 10 */
   flex: 1;
   padding: 0;
 }
 #map {
+  -webkit-box-flex: 1;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: 1;
+  /* OLD - Firefox 19- */
+  -webkit-flex: 1;
+  /* Chrome */
+  -ms-flex: 1;
+  /* IE 10 */
   flex: 1;
 }
 #map .locate {
@@ -348,10 +486,10 @@ img {
   background-color: #e6e600;
 }
 #map .marker {
-  width: 4.4vh !important;
-  height: 4.4vh !important;
-  margin-left: -2.2vh !important;
-  margin-top: -2.2vh !important;
+  width: 4.4vmax !important;
+  height: 4.4vmax !important;
+  margin-left: -2.2vmax !important;
+  margin-top: -2.2vmax !important;
   border: solid 2px;
   border-color: rgba(128, 128, 128, 0.8);
   border-radius: 50%;
@@ -363,10 +501,10 @@ img {
   background-color: #eca979;
 }
 #map .marker.highlight {
-  width: 6vh !important;
-  height: 6vh !important;
-  margin-left: -3vh !important;
-  margin-top: -3vh !important;
+  width: 6vmax !important;
+  height: 6vmax !important;
+  margin-left: -3vmax !important;
+  margin-top: -3vmax !important;
   border: solid 5px #b22222;
 }
 /* ==========================================================================

@@ -15,8 +15,8 @@ var Helper = {
         $(".description", dialog).append(event.text.replace(/\n/, "<br />"));
 
         // time
-        var start = new Date(event.datetime);
-        var end = new Date(event.datetime_end);
+        var start = new Date(event.datetime.replace(" ", "T"));
+        var end = new Date(event.datetime_end.replace(" ", "T"));
         $(".time", dialog).append(start.toLocaleString(undefined, 
             Config.startDateFormat) + " - " + 
             end.toLocaleString(undefined, Config.endDateFormat));

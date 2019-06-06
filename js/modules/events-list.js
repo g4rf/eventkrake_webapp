@@ -5,7 +5,7 @@ var EventsList = {
         var eventsList = $("#events-list");
                 
         // get all event elements and save their ids
-        var oldEvents = $.map($(".event", eventsList).not(".template"), function(n, i){
+        var oldEvents = jQuery.map(jQuery(".event", eventsList).not(".template"), function(n, i){
             return n.id;
         });
         
@@ -31,7 +31,7 @@ var EventsList = {
                 var element = $("#el" + event.id);
                 if(element.length > 0) {
                     // remove element if outdated
-                    if(new Date(event.datetime_end) < new Date()) {
+                    if(new Date(event.datetime_end.replace(" ", "T")) < new Date()) {
                         element.remove();
                         
                     } else { // update element
@@ -45,15 +45,15 @@ var EventsList = {
                     }
                 } else {
                     // only if not outdated
-                    if(new Date(event.datetime_end) > new Date()) {
+                    if(new Date(event.datetime_end.replace(" ", "T")) > new Date()) {
                         // add element
                         element = $(".event.template", eventsList).clone()
                                 .removeClass("template");
                         EventsList.fillElement(element, event);
                         // find position
                         $(".event", eventsList).not(".template").each(function(i, e) {
-                            if(new Date(event.datetime) < 
-                                    new Date($(e).data("event").datetime)) {
+                            if(new Date(event.datetime.replace(" ", "T")) < 
+                                    new Date($(e).data("event").datetime.replace(" ", "T"))) {
                                 element.insertBefore(e);
                                 return false;
                             }
@@ -84,8 +84,8 @@ var EventsList = {
         $(".title", element).empty().append(event.title);
         
         // time
-        var start = new Date(event.datetime);
-        var end = new Date(event.datetime_end);
+        var start = new Date(event.datetime.replace(" ", "T"));
+        var end = new Date(event.datetime_end.replace(" ", "T"));
         var time = start.toLocaleString(undefined, Config.startDateFormat);
         time += " - ";
         time += end.toLocaleString(undefined, Config.endDateFormat);

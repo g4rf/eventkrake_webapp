@@ -170,12 +170,12 @@ var Map = {
     },
     
     updateEvents: function() {
-        var now = new Date(); //*/new Date("2019-06-16T19:05:00");
+        var now = /*new Date(); //*/new Date("2019-06-16T19:05:00");
         var icon = Leaflet.divIcon({className: "marker event"});
         
         Events.iterate(function(event, key, i) {
-            var start = new Date(event.datetime);
-            var end = new Date(event.datetime_end);
+            var start = new Date(event.datetime.replace(" ", "T"));
+            var end = new Date(event.datetime_end.replace(" ", "T"));
             
             if(now < start || now > end) return;
             
@@ -217,8 +217,8 @@ var Map = {
         // select marker        
         var latlng = [location.lat, location.lng];
         Map.map.setView(latlng, Config.mapMaxZoom);
-        Map.highlightMarker(latlng);
         Map.showLocationsLayer();
+        Map.highlightMarker(latlng);
         
         // menu gui things
         jQuery("#menu-bar .button[data-section='map-section'").click();
