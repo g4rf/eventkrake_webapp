@@ -1,4 +1,4 @@
-/* global Events, Locations, Config, Dialog, Helper */
+/* global Events, Locations, Config, Dialog, Helper, moment */
 
 var EventsList = {
     updateEvents: function(filter) {
@@ -31,7 +31,7 @@ var EventsList = {
                 var element = $("#el" + event.id);
                 if(element.length > 0) {
                     // remove element if outdated
-                    if(new Date(event.datetime_end.replace(" ", "T")) < new Date()) {
+                    if(moment(event.datetime_end).isBefore(moment())) {
                         element.remove();
                         
                     } else { // update element
@@ -45,15 +45,15 @@ var EventsList = {
                     }
                 } else {
                     // only if not outdated
-                    if(new Date(event.datetime_end.replace(" ", "T")) > new Date()) {
+                    if(moment(event.datetime_end).isAfter(moment())) {
                         // add element
                         element = $(".event.template", eventsList).clone()
                                 .removeClass("template");
                         EventsList.fillElement(element, event);
                         // find position
                         $(".event", eventsList).not(".template").each(function(i, e) {
-                            if(new Date(event.datetime.replace(" ", "T")) < 
-                                    new Date($(e).data("event").datetime.replace(" ", "T"))) {
+                            if(moment(event.datetime).isBefore( 
+                                    moment($(e).data("event").datetime))) {
                                 element.insertBefore(e);
                                 return false;
                             }
@@ -84,11 +84,11 @@ var EventsList = {
         $(".title", element).empty().append(event.title);
         
         // time
-        var start = new Date(event.datetime.replace(" ", "T"));
-        var end = new Date(event.datetime_end.replace(" ", "T"));
-        var time = start.toLocaleString(undefined, Config.startDateFormat);
+        var start = moment(event.datetime);
+        var end = moment(event.datetime_end);
+        var time = start.format(Config.startDateFormat);
         time += " - ";
-        time += end.toLocaleString(undefined, Config.endDateFormat);
+        time += end.format(Config.endDateFormat);
         $(".time", element).empty().append(time);
         
         // location
