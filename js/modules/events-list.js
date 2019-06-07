@@ -2,7 +2,7 @@
 
 var EventsList = {
     updateEvents: function(filter) {
-        var eventsList = $("#events-list");
+        var eventsList = $("#events-list .events-list");
                 
         // get all event elements and save their ids
         var oldEvents = jQuery.map(jQuery(".event", eventsList).not(".template"), function(n, i){
@@ -99,6 +99,32 @@ var EventsList = {
         });        
     }
 };
+
+/** load day-time-picker **/
+(function() {
+    var weekdays = [_("Sonntag"), _("Montag"), _("Dienstag"), _("Mittwoch"), 
+        _("Donnerstag"), _("Freitag"), _("Samstag"), ]
+    var dayPicker = jQuery("#events-list .day-time-picker .day");
+    var timePicker = jQuery("#events-list .day-time-picker .time");
+    
+    var start = new Date(Config.eventkrakeDateStart);
+    var end = new Date(Config.eventkrakeDateEnd);
+    
+    var currentDate = new Date(start);
+    var currentDay = start.getDay();
+    for(var i = 0; i < Math.floor((end - start) / (1000*60*60*24)); i++) {
+        dayPicker.append("<option value='" + currentDate.toString() + "'>" 
+                + weekdays[currentDay] + "</option>");
+        
+        currentDate.setDate(currentDate.getDate() + 1);
+        currentDay = ++currentDay % 7;
+    }
+    
+    for(var i = 0; i < 24; i++) {
+        timePicker.append("<option value='" + i + "'>ab " 
+                + i + " Uhr</option>");
+    }
+})();
 
 $("#events-list").on("click", ".event", function() {
     Helper.showEvent($(this).data("event"));

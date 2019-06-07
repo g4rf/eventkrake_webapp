@@ -8,6 +8,7 @@
 
 @import "colors";
 @import "animations";
+@import "mixins";
 
 /* ==========================================================================
    Base styles: opinionated defaults
@@ -43,19 +44,9 @@ body {
     font-size: 1em;
     line-height: 1.4;    
     
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flex;         /* Microsoft */  
-    display: -webkit-flex;     /* NEW - Chrome */
-    display: flex;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-align-items: stretch;
-    -moz-align-items: stretch;
-    -ms-align-items: stretch;
-    align-items: stretch;
+    .display-flex;
+    .compat(flex-direction, column);
+    .compat(align-items, stretch);
 }
 
 a {
@@ -136,19 +127,9 @@ img {
 }
 
 .flex {
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flex;         /* Microsoft */  
-    display: -webkit-flex;     /* NEW - Chrome */
-    display: flex;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    -ms-justify-content: space-between;
-    justify-content: space-between;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    align-items: center;
+    .display-flex;
+    .compat(justify-content, space-between);
+    .compat(align-items, center);
 }
 
 .button {
@@ -165,19 +146,9 @@ img {
 
 /* structure */
 .section {
-    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-    display: -ms-flex;         /* Microsoft */  
-    display: -webkit-flex;     /* NEW - Chrome */
-    display: flex;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-align-items: stretch;
-    -moz-align-items: stretch;
-    -ms-align-items: stretch;
-    align-items: stretch;
+    .display-flex;
+    .compat(flex-direction, column);
+    .compat(align-items, stretch);
     overflow: hidden;
     padding: 5px;
 }
@@ -228,18 +199,9 @@ img {
 
 #dialog {
     display: none;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    -ms-justify-content: space-between;
-    justify-content: space-between;
-    -webkit-align-items: stretch;
-    -moz-align-items: stretch;
-    -ms-align-items: stretch;
-    align-items: stretch;
+    .compat(flex-direction, column);
+    .compat(justify-content, space-between);
+    .compat(align-items, stretch);
     
     position: fixed;
     z-index: 1000;
@@ -254,23 +216,10 @@ img {
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
     
     .buttons {
-        display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-        display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-        display: -ms-flex;         /* Microsoft */  
-        display: -webkit-flex;     /* NEW - Chrome */
-        display: flex;
-        -webkit-flex-direction: column;
-        -moz-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-justify-content: space-between;
-        -moz-justify-content: space-between;
-        -ms-justify-content: space-between;
-        justify-content: space-between;
-        -webkit-align-items: stretch;
-        -moz-align-items: stretch;
-        -ms-align-items: stretch;
-        align-items: stretch;
+        .display-flex;
+        .compat(flex-direction, column);
+        .compat(justify-content, space-between);
+        .compat(align-items, stretch);
         padding: 5px;
         font-size: 0.8em;
         border-top: solid 1px @colorTheme;
@@ -321,18 +270,9 @@ img {
 }
 
 #search {
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    -ms-justify-content: space-between;
-    justify-content: space-between;
-    -webkit-align-items: stretch;
-    -moz-align-items: stretch;
-    -ms-align-items: stretch;
-    align-items: stretch;
+    .compat(flex-direction, column);
+    .compat(justify-content, space-between);
+    .compat(align-items, stretch);
     
     position: fixed;
     top: 25%;
@@ -360,14 +300,8 @@ img {
     color: @colorLightFont;
 
     .app-name {
-        -webkit-flex-grow: 2;
-        -moz-flex-grow: 2;
-        -ms-flex-grow: 2;
-        flex-grow: 2;
-        -webkit-flex-shrink: 1;
-        -moz-flex-shrink: 1;
-        -ms-flex-shrink: 1;
-        flex-shrink: 1;
+        .compat(flex-grow, 2);
+        .compat(flex-shrink, 1);
         font-size: 0.7em;
         padding: 0 15px 0 10px;
         white-space: nowrap;
@@ -376,23 +310,10 @@ img {
     }
 
     .button {
-        display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-        display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-        display: -ms-flex;         /* Microsoft */  
-        display: -webkit-flex;     /* NEW - Chrome */
-        display: flex;
-        -webkit-align-items: center;
-        -moz-align-items: center;
-        -ms-align-items: center;
-        align-items: center;
-        -webkit-justify-content: center;
-        -moz-justify-content: center;
-        -ms-justify-content: center;
-        justify-content: center;
-        -webkit-flex-grow: 1;
-        -moz-flex-grow: 1;
-        -ms-flex-grow: 1;
-        flex-grow: 1;
+        .display-flex;
+        .compat(align-items, center);
+        .compat(justify-content, center);
+        .compat(flex-grow, 1);
         color: @colorLightFont;
         text-align: center;
         padding: 15px 10px;
@@ -409,26 +330,32 @@ img {
     }
 
     #menu-bar {
-        display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-        display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-        display: -ms-flex;         /* Microsoft */  
-        display: -webkit-flex;     /* NEW - Chrome */
-        display: flex;
-        -webkit-justify-content: space-between;
-        -moz-justify-content: space-between;
-        -ms-justify-content: space-between;
-        justify-content: space-between;
-        -webkit-align-items: stretch;
-        -moz-align-items: stretch;
-        -ms-align-items: stretch;
-        align-items: stretch;
+        .display-flex;
+        .compat(justify-content, space-between);
+        .compat(align-items, stretch);
     }
 }
-
+    
 /* events-list */
 #events-list {
-    overflow: auto;
-    overflow-x: hidden;
+    .day-time-picker {
+        .compat(flex-shrink, 0);
+        
+        .display-flex;
+        .compat(justify-content, space-between);
+        
+        .day {
+            .compat(flex-grow, 2);
+        }
+        .time {
+            .compat(flex-grow, 1);
+        }        
+    }
+    
+    .events-list {
+        overflow: auto;
+        overflow-x: hidden;
+    }
     
     .search {
         position: fixed;
@@ -450,10 +377,7 @@ img {
 /* location-list */
 #location-list {
     .locations {
-        -webkit-flex-shrink: 0;
-        -moz-flex-shrink: 0;
-        -ms-flex-shrink: 0;
-        flex-shrink: 0;
+        .compat(flex-shrink, 0);
     }
     
     .events-list {
@@ -465,19 +389,11 @@ img {
 /* map */
 #map-section {
     position: relative;
-    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
-    -moz-box-flex: 1;         /* OLD - Firefox 19- */
-    -webkit-flex: 1;          /* Chrome */
-    -ms-flex: 1;              /* IE 10 */
-    flex: 1;
+    .compat(flex, 1);
     padding: 0;
 }
 #map {
-    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
-    -moz-box-flex: 1;         /* OLD - Firefox 19- */
-    -webkit-flex: 1;          /* Chrome */
-    -ms-flex: 1;              /* IE 10 */
-    flex: 1;
+    .compat(flex, 1);
     
     .locate {
         cursor: pointer;

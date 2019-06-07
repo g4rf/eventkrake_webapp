@@ -131,7 +131,7 @@ var Map = {
                     Map.highlightMarker(this.getLatLng());
                     
                     jQuery("#location-list .locations").val(location.id);
-                    jQuery("#menu-bar .button[data-section='location-list'").click();
+                    jQuery("#menu-bar .button.location-list").click();
                 }).addTo(Map.locationsLayer);
             });
                         
@@ -170,7 +170,7 @@ var Map = {
     },
     
     updateEvents: function() {
-        var now = /*new Date(); //*/new Date("2019-06-16T19:05:00");
+        var now = new Date(); //*/new Date("2019-06-16T19:05:00");
         var icon = Leaflet.divIcon({className: "marker event"});
         
         Events.iterate(function(event, key, i) {
@@ -221,6 +221,6 @@ var Map = {
         Map.highlightMarker(latlng);
         
         // menu gui things
-        jQuery("#menu-bar .button[data-section='map-section'").click();
+        jQuery("#menu-bar .button.map-section").click();
     }
 };

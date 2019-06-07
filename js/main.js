@@ -23,6 +23,7 @@ EventsList.updateEvents();
 LocationList.updateLocations();
 
 /*** GUI ***/
+$("title").empty().append(Config.appName);
 $(".app-name").empty().append(Config.appName);
 $(".app-text").empty().append(Config.appText);
 

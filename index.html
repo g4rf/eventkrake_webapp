@@ -2,7 +2,6 @@
 <html class="no-js" lang="de"><head>
     <meta charset="utf-8">
     <title></title>
-    <meta name="description" content="">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui">
@@ -36,7 +35,7 @@
     <script src="js/vendor/modernizr-2.7.1.min.js"></script>
     
     <!-- debugging -->
-    <script src="http://192.168.8.104:8080/target/target-script-min.js#anonymous"></script>
+    <!--script src="http://192.168.8.104:8080/target/target-script-min.js#anonymous"></script-->
 </head><body>    
     <!-- top bar -->
     <div id="top-bar">
@@ -45,24 +44,32 @@
             <div class="button tile info">&#8505;</div>
         </div>
         <div id="menu-bar">
-            <div class="button highlighted" data-section="events-list">Veranstaltungen</div>
-            <div class="button" data-section="location-list">Orte</div>
-            <div class="button" data-section="map-section">Karte</div>
+            <div class="button highlighted event-list" 
+                 data-section="events-list">Veranstaltungen</div>
+            <div class="button location-list" 
+                 data-section="location-list">Orte</div>
+            <div class="button map-section" data-section="map-section">Karte</div>
         </div>
     </div>
     
     <!-- list of all events -->
     <div class="section" id="events-list">
-        <div class="no-events">
-            <div class="rotate">&#10710;</div>
-            Rufe Daten ab...
+        <div class="day-time-picker">
+            <select class="day"></select>
+            <select class="time"></select>
         </div>
-        <div class="template event">
-            <div class="time"></div>
-            <div class="title"></div>
-            <div class="location-name"></div>
-            <div class="location-address"></div>
-        </div>
+        <div class="events-list">
+            <div class="no-events">
+                <div class="rotate">&#10710;</div>
+                Rufe Daten ab...
+            </div>
+            <div class="template event">
+                <div class="time"></div>
+                <div class="title"></div>
+                <div class="location-name"></div> ⸱ 
+                <div class="location-address"></div>
+            </div>
+        </div>    
         <div class="search button">&#128270;</div>
     </div>
 

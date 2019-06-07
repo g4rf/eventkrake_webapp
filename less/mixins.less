@@ -1,0 +1,14 @@
+.display-flex () {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flex;         /* Microsoft */  
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+}
+
+.compat (@attr, @val) {
+    -webkit-@{attr}: @val;
+    -moz-@{attr}: @val;
+    -ms-@{attr}: @val;
+    @{attr}: @val;
+}

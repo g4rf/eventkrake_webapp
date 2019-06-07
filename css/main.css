@@ -399,7 +399,38 @@ img {
   align-items: stretch;
 }
 /* events-list */
-#events-list {
+#events-list .day-time-picker {
+  -webkit-flex-shrink: 0;
+  -moz-flex-shrink: 0;
+  -ms-flex-shrink: 0;
+  flex-shrink: 0;
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flex;
+  /* Microsoft */
+  display: -webkit-flex;
+  /* NEW - Chrome */
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+}
+#events-list .day-time-picker .day {
+  -webkit-flex-grow: 2;
+  -moz-flex-grow: 2;
+  -ms-flex-grow: 2;
+  flex-grow: 2;
+}
+#events-list .day-time-picker .time {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+}
+#events-list .events-list {
   overflow: auto;
   overflow-x: hidden;
 }
@@ -430,26 +461,16 @@ img {
 /* map */
 #map-section {
   position: relative;
-  -webkit-box-flex: 1;
-  /* OLD - iOS 6-, Safari 3.1-6 */
-  -moz-box-flex: 1;
-  /* OLD - Firefox 19- */
   -webkit-flex: 1;
-  /* Chrome */
+  -moz-flex: 1;
   -ms-flex: 1;
-  /* IE 10 */
   flex: 1;
   padding: 0;
 }
 #map {
-  -webkit-box-flex: 1;
-  /* OLD - iOS 6-, Safari 3.1-6 */
-  -moz-box-flex: 1;
-  /* OLD - Firefox 19- */
   -webkit-flex: 1;
-  /* Chrome */
+  -moz-flex: 1;
   -ms-flex: 1;
-  /* IE 10 */
   flex: 1;
 }
 #map .locate {
