@@ -31,7 +31,7 @@ var Map = {
                 onAdd: function (map) {
                     var container = Leaflet.DomUtil.create('div', 
                         'leaflet-bar leaflet-control switch-layer show-events');
-                    jQuery(container).append("Was läuft gerade?").click(function() {
+                    jQuery(container).append(_("Was läuft gerade?")).click(function() {
                         Map.showEventsLayer();
                     });
                     return container;
@@ -46,7 +46,7 @@ var Map = {
                 onAdd: function (map) {
                     var container = Leaflet.DomUtil.create('div', 
                         'leaflet-bar leaflet-control switch-layer show-locations selected');
-                    jQuery(container).append("Orte").click(function() {
+                    jQuery(container).append(_("Orte")).click(function() {
                         Map.showLocationsLayer();
                     });
                     return container;
@@ -140,9 +140,9 @@ var Map = {
             Map.updateEvents();
             
             // show location or events?
-            var now = new Date();
-            if(now < new Date(Config.eventkrakeDateStart) || 
-                    now > new Date(Config.eventkrakeDateEnd)) {
+            var now = moment();
+            if(now.isBefore(moment(Config.eventkrakeDateStart)) || 
+                    now.isAfter(moment(Config.eventkrakeDateEnd))) {
                 // when outside of festival time show locations
                 Map.map.addLayer(Map.locationsLayer);
             } else {
@@ -170,14 +170,14 @@ var Map = {
     },
     
     updateEvents: function() {
-        var now = new Date(); //*/new Date("2019-06-16T19:05:00");
+        var now = moment(); //*/moment("2019-06-16T19:05:00");
         var icon = Leaflet.divIcon({className: "marker event"});
         
         Events.iterate(function(event, key, i) {
-            var start = new Date(event.datetime.replace(" ", "T"));
-            var end = new Date(event.datetime_end.replace(" ", "T"));
+            var start = moment(event.datetime);
+            var end = moment(event.datetime_end);
             
-            if(now < start || now > end) return;
+            if(now.isBefore(start) || now.isAfter(end)) return;
             
             Locations.getItem(event.locationid, function(err, location) {
                 if(err || location == null) return;

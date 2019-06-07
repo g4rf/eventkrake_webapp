@@ -1,5 +1,9 @@
-/* global Config, Locations, Dialog, Map */
+/* global Config, Locations, Dialog, Map, moment */
 
+/*** moment locale ***/
+moment.locale(jQuery("html").attr("lang"));
+
+/*** Helper ***/
 var Helper = {
     showEvent: function(event) {
         var dialog = $(".dialog-event.template").clone().removeClass("template");
@@ -15,11 +19,10 @@ var Helper = {
         $(".description", dialog).append(event.text.replace(/\n/, "<br />"));
 
         // time
-        var start = new Date(event.datetime.replace(" ", "T"));
-        var end = new Date(event.datetime_end.replace(" ", "T"));
-        $(".time", dialog).append(start.toLocaleString(undefined, 
-            Config.startDateFormat) + " - " + 
-            end.toLocaleString(undefined, Config.endDateFormat));
+        var start = moment(event.datetime);
+        var end = moment(event.datetime_end);
+        $(".time", dialog).append(start.format(Config.startDateFormat) + " - "
+            + end.format(Config.endDateFormat));
 
         // location
         Locations.getItem(event.locationid, function(err, location) {

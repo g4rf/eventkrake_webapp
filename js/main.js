@@ -1,4 +1,4 @@
-/* global localforage, Api, Config, EventsList, LocationList, Dialog, Map */
+/* global localforage, Api, Config, EventsList, LocationList, Dialog, Map, moment */
 
 /*** do some good stuff from Boilerplate ***/
 MBP.hideUrlBarOnLoad(); // Hide URL Bar

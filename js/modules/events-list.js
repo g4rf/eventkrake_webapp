@@ -28,10 +28,13 @@ var EventsList = {
                     }
                 }
                 
+                var time = moment(jQuery("#events-list .day-time-picker .day").val());
+                time.hour(jQuery("#events-list .day-time-picker .time").val());
+                    
                 var element = $("#el" + event.id);
                 if(element.length > 0) {
                     // remove element if outdated
-                    if(moment(event.datetime_end).isBefore(moment())) {
+                    if(moment(event.datetime_end).isBefore(time)) {
                         element.remove();
                         
                     } else { // update element
@@ -45,7 +48,7 @@ var EventsList = {
                     }
                 } else {
                     // only if not outdated
-                    if(moment(event.datetime_end).isAfter(moment())) {
+                    if(moment(event.datetime_end).isAfter(time)) {
                         // add element
                         element = $(".event.template", eventsList).clone()
                                 .removeClass("template");
@@ -102,22 +105,16 @@ var EventsList = {
 
 /** load day-time-picker **/
 (function() {
-    var weekdays = [_("Sonntag"), _("Montag"), _("Dienstag"), _("Mittwoch"), 
-        _("Donnerstag"), _("Freitag"), _("Samstag"), ]
     var dayPicker = jQuery("#events-list .day-time-picker .day");
     var timePicker = jQuery("#events-list .day-time-picker .time");
     
-    var start = new Date(Config.eventkrakeDateStart);
-    var end = new Date(Config.eventkrakeDateEnd);
-    
-    var currentDate = new Date(start);
-    var currentDay = start.getDay();
-    for(var i = 0; i < Math.floor((end - start) / (1000*60*60*24)); i++) {
-        dayPicker.append("<option value='" + currentDate.toString() + "'>" 
-                + weekdays[currentDay] + "</option>");
+    var date = moment(Config.eventkrakeDateStart).startOf("day");
+    var end = moment(Config.eventkrakeDateEnd).startOf("day");
+    while(date.isBefore(end)) {
+        dayPicker.append("<option value='" + date.toISOString() + "'>" 
+                + date.format("dddd, D.M.") + "</option>");
         
-        currentDate.setDate(currentDate.getDate() + 1);
-        currentDay = ++currentDay % 7;
+        date.add(1, "day");
     }
     
     for(var i = 0; i < 24; i++) {
@@ -128,6 +125,11 @@ var EventsList = {
 
 $("#events-list").on("click", ".event", function() {
     Helper.showEvent($(this).data("event"));
+});
+
+jQuery("#events-list .day-time-picker select").on("change", function() {
+    EventsList.clear();
+    EventsList.updateEvents();
 });
 
 $("#events-list .button.search").click(function() {

@@ -1,4 +1,4 @@
-/* global Events, Locations, Config, Dialog, Helper */
+/* global Events, Locations, Config, Dialog, Helper, moment */
 
 var LocationList = {
     updateLocations: function() {
@@ -58,8 +58,8 @@ var LocationList = {
             // find position
             var inserted = false;
             $(".event", eventsList).not(".template").each(function(i, e) {
-                if(new Date(event.datetime.replace(" ", "T")) < 
-                        new Date($(e).data("event").datetime.replace(" ", "T"))) {
+                if(moment(event.datetime).isBefore(
+                        moment($(e).data("event").datetime))) {
                     element.insertBefore(e);
                     inserted = true;
                     return false;
@@ -81,11 +81,11 @@ var LocationList = {
         $(".title", element).empty().append(event.title);
         
         // time
-        var start = new Date(event.datetime.replace(" ", "T"));
-        var end = new Date(event.datetime_end.replace(" ", "T"));
-        var time = start.toLocaleString(undefined, Config.startDateFormat);
+        var start = moment(event.datetime);
+        var end = moment(event.datetime_end);
+        var time = start.format(Config.startDateFormat);
         time += " - ";
-        time += end.toLocaleString(undefined, Config.endDateFormat);
+        time += end.format(Config.endDateFormat);
         $(".time", element).empty().append(time);
         
         // excerpt
