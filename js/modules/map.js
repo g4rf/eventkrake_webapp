@@ -1,4 +1,4 @@
-/* global Leaflet, Config, Locations, LocationList, Events, Helper */
+/* global Leaflet, Config, Locations, LocationList, Events, Helper, Hint */
 
 /* no conflict */
 var Leaflet = L.noConflict();
@@ -66,8 +66,7 @@ var Map = {
                             // disable locating
                             jQuery(this).removeClass("on");
                             Map.map.stopLocate();
-                            //Map.locateMarker.remove();
-                            Map.locateCircle.remove();
+                            if(Map.locateCircle) Map.locateCircle.remove();
                         } else { // enable locating
                             jQuery(this).addClass("on");
                             Map.map.locate({
@@ -100,7 +99,7 @@ var Map = {
                 Map.map.panTo(l.latlng);
             });
             Map.map.on('locationerror', function(err) {
-                console.log(err);
+                Hint.show(err.message);
             });
             
             // add tile layer

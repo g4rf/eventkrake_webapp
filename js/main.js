@@ -55,3 +55,15 @@ $("#top-bar .button.info").on("click", function() {
     var content = $(".dialog-impress").clone().removeClass("template");
     Dialog.show(content);
 });
+
+/*** add to homescreen ***/
+addToHomescreen({
+    debug: false,
+    logging: false,
+    modal: true,
+    lifespan: 60, // life of the message in seconds
+    skipFirstVisit: true, //*/false,
+    startDelay: 0,
+    displayPace: 7 * 24 * 60, //*/0, // minutes before the message is shown again
+    detectHomescreen: true
+});

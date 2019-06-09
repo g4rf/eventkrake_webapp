@@ -203,6 +203,23 @@ img {
   margin: 0 0 10px 5px;
   font-size: 0.9em;
 }
+/* hints */
+#hint {
+  z-index: 10000;
+  display: none;
+  position: fixed;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
+  top: auto;
+  background-color: #fff;
+  border: solid 3px #f88;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #222;
+  padding: 5%;
+  text-align: center;
+  font-weight: bold;
+}
 /* dialogs */
 .dialog {
   display: none;
