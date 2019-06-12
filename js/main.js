@@ -55,27 +55,3 @@ $("#top-bar .button.info").on("click", function() {
     var content = $(".dialog-impress").clone().removeClass("template");
     Dialog.show(content);
 });
-
-/*** add to homescreen ***/
-addToHomescreen({
-   debug: false, //*/true,
-    logging: false, //*/true,
-    modal: true,
-    lifespan: 60, // life of the message in seconds
-    skipFirstVisit: true, //*/false,
-    startDelay: 0,
-    displayPace: 7 * 24 * 60 //*/0, // minutes before the message is shown again
-});
-
-/*** add to homescreen ***/
-/*let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    console.log("beforeinstallprompt");
-    
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e;
-    
-    // show add dialog
-});*/

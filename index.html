@@ -36,12 +36,9 @@
 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="js/vendor/leaflet/leaflet.css">
-    <link rel="stylesheet" href="js/vendor/addtohomescreen/addtohomescreen.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/vendor/modernizr-2.7.1.min.js"></script>
     
-    <!-- debugging -->
-    <!--script src="http://192.168.8.104:8080/target/target-script-min.js#anonymous"></script-->
 </head><body>    
     <!-- top bar -->
     <div id="top-bar">
@@ -147,12 +144,19 @@
         ohne.</div>
 
     <!-- Scripts -->
-    <script> // ServiceWorker
+    <script>
+        // force SSL
+        if (location.protocol != 'https:')
+        {
+            location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+        }
+    
+        // ServiceWorker
         if('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
     </script>
-    <script src="js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="js/vendor/jquery-3.4.1.min.js"></script>
     <script src="js/vendor/moment-with-locales.js"></script>    
     <script src="js/vendor/jq.gettext.js"></script>
     <script src="js/vendor/localforage.min.js"></script>
@@ -161,7 +165,6 @@
     <script src="js/vendor/pouchdb-7.0.0.min.js"></script>
     <script src="js/vendor/leaflet/leaflet-src.js"></script>
     <script src="js/vendor/leaflet/L.TileLayer.PouchDBCached.js"></script>
-    <script src="js/vendor/addtohomescreen/addtohomescreen.js"></script>
 
     <script src="js/helper.js"></script>
     <script src="config.js"></script>    
