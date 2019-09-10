@@ -1,0 +1,47 @@
+{
+    "name": "Neustadt Art Festival 2019",
+    "short_name": "NAF 2019",
+    "description": "Die WebApp, um Veranstaltungen und Orte aus der Eventkrake-Datenbank anzuzeigen.",
+
+    "launch_path": "index.html",
+    "start_url": "index.html",
+
+    "background_color": "#e72d37",
+    "display": "standalone",
+    "theme_color": "#e72d37",
+
+    "icons": [
+        {
+          "src": "img/touch/touch-icon-60x60.png",
+          "type": "image/png",
+          "sizes": "60x60"
+        },
+        {
+          "src": "img/touch/touch-icon-128x128.png",
+          "type": "image/png",
+          "sizes": "128x128"
+        },
+        {
+          "src": "img/touch/touch-icon-196x196.png",
+          "type": "image/png",
+          "sizes": "196x196"
+        },
+        {
+          "src": "img/touch/touch-icon-512x512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+        }
+    ],
+
+    "developer": {
+        "name": "Eventkrake",
+        "url": "https://eventkrake.de"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "de",
+    "permissions": {
+        "geolocation": {
+            "description": "Required for showing the location of the user."
+        }
+    }
+}
