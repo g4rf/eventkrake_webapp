@@ -1,14 +1,14 @@
 {
-    "name": "Bunte Republik Neustadt 2020",
-    "short_name": "BRN 2020",
+    "name": "Neustadt Art Festival 2019",
+    "short_name": "NAF 2019",
     "description": "Die WebApp, um Veranstaltungen und Orte aus der Eventkrake-Datenbank anzuzeigen.",
 
     "launch_path": "index.html",
     "start_url": "index.html",
 
-    "background_color": "#bccc0c",
+    "background_color": "#e72d37",
     "display": "standalone",
-    "theme_color": "#bccc0c",
+    "theme_color": "#e72d37",
 
     "icons": [
         {
