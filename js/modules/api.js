@@ -11,18 +11,16 @@ var Api = {
     getEvents: function(options) {
         if(typeof options == "undefined") options = {};
         
-        options.event_datestart = options.event_datestart ||
+        options.earliestStart = options.earliestStart ||
                 Config.eventkrakeDateStart;
-        options.event_dateend = options.event_dateend ||
+        options.latestStart = options.latestStart ||
                 Config.eventkrakeDateEnd;
-        options.event_festivals = options.event_festivals ||
-                Config.eventkrakeFestival;
         
-        return jQuery.ajax("https://api.eventkrake.de/getevents/", {
+        return jQuery.ajax(Config.apiUrl + "events", {
             cache: false,
             crossDomain: true,
             data: options,
-            method: "POST"
+            method: "GET"
         }).done(function(data) {
             if(Object.keys(data.locations).length > 0) {
                 // store locations
@@ -37,9 +35,8 @@ var Api = {
             if(Object.keys(data.events).length > 0) {
                 // store events
                 Events.clear(function() {
-                    jQuery.each(data.events, function(id, event) {
-                        if(! id) return; // falsy entry
-                        Events.setItem(id, event);
+                    jQuery.each(data.events, function(index, event) {
+                        Events.setItem(event.id, event);
                     });
                 });
             }

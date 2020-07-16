@@ -9,18 +9,22 @@ var Helper = {
         var dialog = $(".dialog-event.template").clone().removeClass("template");
 
         // image
-        $("img", dialog).attr({
-            "src": event.image,
-            "alt": event.title
-        });
+        if(! event.image) {
+            $("img", dialog).remove();
+        } else {
+            $("img", dialog).attr({
+                "src": event.image,
+                "alt": event.title
+            });
+        }
 
         // infos
         $(".title", dialog).append(event.title);
         $(".description", dialog).append(event.text.replace(/\n/, "<br />"));
 
         // time
-        var start = moment(event.datetime);
-        var end = moment(event.datetime_end);
+        var start = moment(event.start);
+        var end = moment(event.end);
         $(".time", dialog).append(start.format(Config.startDateFormat) + " - "
             + end.format(Config.endDateFormat));
 

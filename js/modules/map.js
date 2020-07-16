@@ -173,8 +173,8 @@ var Map = {
         var icon = Leaflet.divIcon({className: "marker event"});
         
         Events.iterate(function(event, key, i) {
-            var start = moment(event.datetime);
-            var end = moment(event.datetime_end);
+            var start = moment(event.start);
+            var end = moment(event.end);
             
             if(now.isBefore(start) || now.isAfter(end)) return;
             

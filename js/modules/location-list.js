@@ -58,8 +58,8 @@ var LocationList = {
             // find position
             var inserted = false;
             $(".event", eventsList).not(".template").each(function(i, e) {
-                if(moment(event.datetime).isBefore(
-                        moment($(e).data("event").datetime))) {
+                if(moment(event.start).isBefore(
+                        moment($(e).data("event").start))) {
                     element.insertBefore(e);
                     inserted = true;
                     return false;
@@ -81,25 +81,21 @@ var LocationList = {
         $(".title", element).empty().append(event.title);
         
         // time
-        var start = moment(event.datetime);
-        var end = moment(event.datetime_end);
+        var start = moment(event.start);
+        var end = moment(event.end);
         var time = start.format(Config.startDateFormat);
         time += " - ";
         time += end.format(Config.endDateFormat);
         $(".time", element).empty().append(time);
         
         // excerpt
-        if(event.excerpt.length > 0) {
-            $(".excerpt", element).empty().append(event.excerpt);
+        if(event.text.length > 0) {                
+            $(".excerpt", element).empty().append(
+                $("<div>" + event.text + "</div>").text()
+                    .substring(0,100) + "…"
+            );
         } else {
-            if(event.text.length > 0) {                
-                $(".excerpt", element).empty().append(
-                    $("<div>" + event.text + "</div>").text()
-                        .substring(0,100) + "…"
-                );
-            } else {
-                jQuery(".excerpt", element).hide();
-            }
+            jQuery(".excerpt", element).hide();
         }
     }
 };

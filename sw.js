@@ -14,14 +14,14 @@ this.addEventListener('install', function(event) {
                 "css/normalize.css",
                 "js/helper.js",
                 "js/main.js",
+                "js/plugins.js",
                 "js/modules/api.js",
                 "js/modules/dialog.js",
                 "js/modules/events-list.js",
                 "js/modules/hint.js",
                 "js/modules/location-list.js",
                 "js/modules/map.js",
-                "js/vendor/addtohomescreen/addtohomescreen.css",
-                "js/vendor/addtohomescreen/addtohomescreen.js",
+                "js/vendor/cache-polyfill.js",
                 "js/vendor/fetch.umd.js",
                 "js/vendor/jq.gettext.js",
                 "js/vendor/jquery-2.1.0.min.js",
@@ -50,7 +50,7 @@ this.addEventListener('fetch', function(event) {
     //if(event.request.url.indexOf("openstreetmap") > -1) return;
     
     // don't cache Eventkrake data, because we save it with localforage
-    if(event.request.url.indexOf("api.eventkrake.de") > -1) return;
+    if(event.request.url.indexOf("wp-json/eventkrake") > -1) return;
     
     event.respondWith(
         caches.open(Config.cacheName).then(function(cache) {

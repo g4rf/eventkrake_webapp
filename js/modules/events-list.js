@@ -34,7 +34,7 @@ var EventsList = {
                 var element = $("#el" + event.id);
                 if(element.length > 0) {
                     // remove element if outdated
-                    if(moment(event.datetime_end).isBefore(time)) {
+                    if(moment(event.end).isBefore(time)) {
                         element.remove();
                         
                     } else { // update element
@@ -48,15 +48,15 @@ var EventsList = {
                     }
                 } else {
                     // only if not outdated
-                    if(moment(event.datetime_end).isAfter(time)) {
+                    if(moment(event.end).isAfter(time)) {
                         // add element
                         element = $(".event.template", eventsList).clone()
                                 .removeClass("template");
                         EventsList.fillElement(element, event);
                         // find position
                         $(".event", eventsList).not(".template").each(function(i, e) {
-                            if(moment(event.datetime).isBefore( 
-                                    moment($(e).data("event").datetime))) {
+                            if(moment(event.start).isBefore( 
+                                    moment($(e).data("event").start))) {
                                 element.insertBefore(e);
                                 return false;
                             }
@@ -87,8 +87,8 @@ var EventsList = {
         $(".title", element).empty().append(event.title);
         
         // time
-        var start = moment(event.datetime);
-        var end = moment(event.datetime_end);
+        var start = moment(event.start);
+        var end = moment(event.end);
         var time = start.format(Config.startDateFormat);
         time += " - ";
         time += end.format(Config.endDateFormat);
